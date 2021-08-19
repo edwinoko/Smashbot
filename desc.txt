@@ -1,0 +1,18 @@
+The vision of this bot is as follows:
+
+1. Make a conversational bot that can give answers back without being too
+much of a problem with the use of sentiment analysis.
+
+2.  Pull data from smash ultimate frame data, eventhubs smash.gg and youtube
+
+
+Functions
+1. get frame data per character
+
+2. get the results of the latest super majors add youtube links to some of
+the sets
+
+3. get matchup data per character
+
+In the future more features might be added.
+ 
