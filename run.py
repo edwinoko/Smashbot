@@ -11,9 +11,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-  if message.author == client.user:
-    return
-
   if message.content.startwith('$smash'):
     await message.channel.send('we smashin bro')
 
@@ -22,5 +19,7 @@ async def on_message(message):
 
   if message.content.startswith("shrug"):
     await message.channel.send('¯\_(ツ)_/¯')
-
+  
+  if message.author == client.user:
+    return
 client.run(TOKEN)
