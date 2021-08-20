@@ -6,6 +6,7 @@ import random
 
 client = discord.Client()
 
+TOKEN = os.getenv('TOKEN')
 
 @client.event
 async def on_ready():
@@ -16,4 +17,4 @@ async def on_message(message):
   if message.author == client.user:
     return
 
-client.run(os.getenv('TOKEN'))
+client.run(TOKEN)
