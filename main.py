@@ -17,4 +17,7 @@ async def on_message(message):
   if message.author == client.user:
     return
 
+  if message.content.startwith('$smash'):
+    await message.channel.send('we smashin bro')
+
 client.run(TOKEN)
