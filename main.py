@@ -16,5 +16,6 @@ async def on_message(message):
 
   if message.content.startwith('$smash'):
     await message.channel.send('we smashin bro')
+  await client.process_commands(message)
 
 client.run(TOKEN)
