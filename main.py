@@ -1,8 +1,5 @@
 import discord
 import os
-import requests
-import json
-import random
 
 client = discord.Client()
 
