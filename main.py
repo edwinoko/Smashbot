@@ -16,6 +16,11 @@ async def on_message(message):
 
   if message.content.startwith('$smash'):
     await message.channel.send('we smashin bro')
-  await client.process_commands(message)
+
+  if message.content.startswith('$hello'):
+    await message.channel.send("Hello!")
+
+  if message.content.startswith("shrug"):
+    await message.channel.send('¯\_(ツ)_/¯')
 
 client.run(TOKEN)
