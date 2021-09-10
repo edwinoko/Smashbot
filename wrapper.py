@@ -3,10 +3,12 @@ This file is a layer that connects the different function files with the bot. Th
 non reliant on any bot framework. 
 '''
 
-
 # this function is responsible for making sure that all the data has been scraped and putten in the raw_data directory
+from os import remove
+from random import randint
 from crawler.data_crawler import get_data
 from commands.frame_data_commands import *
+import random
 
 
 def startup():
@@ -21,11 +23,25 @@ def handle_command(command):
 
     if command.startswith('!smash'):
 
-        print('this is a smash command')
-
         answer = smash_command(command)
 
-    return answer
+        return answer
+
+    if command.startswith('!rate'):
+
+        removed_command = command.split(' ')
+        del removed_command[0]
+
+        if type(removed_command) is str:
+            text = (removed_command)
+        else:
+            text = " ".join(removed_command)
+            
+        number = randint(1,100)
+
+        answer = 'I rate '+text+' '+str(number)+'%'
+
+        return str(answer)
 
 def smash_command(command):
 
@@ -48,8 +64,10 @@ def smash_command(command):
             print('this was not a request for framedata')
 
     if command.endswith('pickmycharacter'):
-
+        
         answer = get_random_character()
+
+        return answer
 
     if 'vs' in command.lower():
         

@@ -9,19 +9,32 @@ def get_frame_data(character, move):
 
     cwd = str(Path.cwd())
 
+    #import pdb; pdb.set_trace()
+
     f = open(cwd+'/smash_character_data/'+character+".json")
 
     character_data = json.load(f)
-
-    data = character_data['moves'][move]
-
-    answer = ['https://ultimateframedata.com/'+data['hitbox'], 
+    
+    try:
+        data = character_data['moves'][move]
+        answer = ['https://ultimateframedata.com/'+data['hitbox'], 
                'Startup frames : '+data['startup'],
                'Active frames : '+data['activeframes'],
                'this attack is '+data['advantage']+' on shield',
                 data['notes']]
 
-    return answer
+        return answer
+    except KeyError:
+        for key in character_data['moves'].keys():
+            if move in key:
+                data = character_data['moves'][key]
+                answer = ['https://ultimateframedata.com/'+data['hitbox'], 
+                    'Startup frames : '+data['startup'],
+                    'Active frames : '+data['activeframes'],
+                    'this attack is '+data['advantage']+' on shield',
+                    data['notes']]
+                return answer
+
 
 def get_random_character():
     directory_in_str = str(Path.cwd())+'/smash_character_data'
@@ -33,7 +46,7 @@ def get_random_character():
         path_in_str = str(path).split('/')[-1].replace('.json','').replace('_',' ')
         # print(path_in_str)
         all_characters.append(path_in_str)
-
+    
     return random.choice(all_characters)
 
 #
