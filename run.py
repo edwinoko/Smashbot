@@ -1,4 +1,4 @@
-from wrapper import handle_command, smash_command
+from wrapper import *
 from random_quotes.quote import get_random_quote
 import os
 import discord
@@ -29,28 +29,28 @@ async def on_message(message):
     await message.channel.send('¯\_(ツ)_/¯')
 
   if message.content.startswith("!rate"):
-    rating = handle_command(message.content)
-    await message.channel.send(rating)  
+    rate = rating(message.content)
+    await message.channel.send(rate)  
 
 # sends a random gamer quote
   if message.content.startswith("gg"):
     await message.channel.send(get_random_quote())
 
-# get frame data of a character
-  if message.content.startswith('!smash'):
-    list_of_lines = handle_command(message.content)
-    # send string to the function to analyze the smash command.
-    if type(list_of_lines) is list:
-      for line in list_of_lines:
-        await message.channel.send(line)
-    if type(list_of_lines) is str:
-      await message.channel.send(list_of_lines)
-
 # random character selection
   if 'pickmycharacter' in message.content:
-    answer = smash_command(message.content)
-    await message.channel.send(answer)
- 
+    answer = pick_random_character()
+    await message.channel.send(embed=answer)
+
+# get frame data of a character
+  if message.content.startswith('!smash') and '|' in message.content:
+    answer = frame_data(message.content)
+    await message.channel.send(embed=answer)
+
+# get matchup data of the character
+  if message.content.startswith('!smash') and 'vs' in message.content:
+    answer = matchup(message.content)
+    await message.channel.send(embed=answer)
+
   if message.author == client.user:
     return
   
