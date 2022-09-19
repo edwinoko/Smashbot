@@ -1,4 +1,3 @@
-# imports
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -79,7 +78,7 @@ def get_data():
 '''
 
 
-    # if it is then redownload everything. I have already added dates to the individual files for optimization later down the road
+    # if it is, then redownload everything. I have already added dates to the individual files for optimization later down the road
     
 
 # cleaning the data
@@ -178,3 +177,4 @@ def create_local_data_structure(title, url):
     return x
 
 #x = get_data()
+#print('It has been done')

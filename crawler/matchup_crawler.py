@@ -1,3 +1,4 @@
+from webbrowser import get
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -86,3 +87,6 @@ def write_matchup_to_file(title,character_data):
             char_file.write(json.dumps(character_data))
 
     return 'we gucci my homie'
+
+x = get_data()
+print(x)
