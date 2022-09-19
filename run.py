@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 client = discord.Client()
 
 load_dotenv()
-#TOKEN = os.environ.get('DISCORD_TOKEN', None)
-TOKEN = os.getenv('DISCORD_TOKEN')
+#TOKEN = os.environ.get('TOKEN', None)
+TOKEN = os.getenv('TOKEN')
 
 @client.event
 async def on_ready():
